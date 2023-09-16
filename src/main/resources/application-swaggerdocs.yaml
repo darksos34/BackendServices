@@ -1,0 +1,6 @@
+api:
+  info:
+    title: BackendServices
+    version: '@project.version@'
+    description:
+      Lekker hoor goed bezig
