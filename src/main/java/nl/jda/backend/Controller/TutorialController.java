@@ -1,32 +1,33 @@
 package nl.jda.backend.Controller;
-import java.util.ArrayList;
-import java.util.List;
 
+import lombok.RequiredArgsConstructor;
 import nl.jda.backend.Model.Tutorial;
 import nl.jda.backend.Repo.TutorialRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @CrossOrigin(origins = "http://localhost:8080")
 @RestController
 @RequestMapping("/api")
+@RequiredArgsConstructor
 public class TutorialController {
 
-    @Autowired
-    TutorialRepository tutorialRepository;
+    private  final TutorialRepository tutorialRepository;
 
     @GetMapping("/tutorials")
     public ResponseEntity<List<Tutorial>> getAllTutorials(@RequestParam(required = false) String title) {
         List<Tutorial> tutorials = new ArrayList<Tutorial>();
 
         if (title == null)
-            tutorialRepository.findAll().forEach(tutorials::add);
+            tutorials.addAll(tutorialRepository.findAll());
         else
-            tutorialRepository.findByTitleContaining(title).forEach(tutorials::add);
+            tutorials.addAll(tutorialRepository.findByTitleContaining(title));
 
         if (tutorials.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);

@@ -2,9 +2,7 @@ package nl.jda.backend.Model;
 
 import java.util.HashSet;
 import java.util.Set;
-
 import jakarta.persistence.*;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -28,13 +26,11 @@ public class Tag {
     private Set<Tutorial> tutorials = new HashSet<>();
 
     public Tag() {
-
     }
 
     public long getId() {
         return id;
     }
-
     public String getName() {
         return name;
     }

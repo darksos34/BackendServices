@@ -3,7 +3,6 @@ package nl.jda.backend.Controller;
 
 import lombok.AllArgsConstructor;
 import nl.jda.backend.Model.User;
-import nl.jda.backend.Repo.UserRepository;
 import nl.jda.backend.Service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
